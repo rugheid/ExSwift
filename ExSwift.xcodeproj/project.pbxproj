@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0F8FB91989431900439203 /* LazySequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F8FB81989431900439203 /* LazySequence.swift */; };
+		1E0F8FBA1989431900439203 /* LazySequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F8FB81989431900439203 /* LazySequence.swift */; };
+		1E0F8FBC1989434400439203 /* ExSwiftLazySequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F8FBB1989434400439203 /* ExSwiftLazySequenceTests.swift */; };
+		1E0F8FBD1989434400439203 /* ExSwiftLazySequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F8FBB1989434400439203 /* ExSwiftLazySequenceTests.swift */; };
 		1E11AF8A1943222D006BCE48 /* ExSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E11AF891943222D006BCE48 /* ExSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E11AFA719432236006BCE48 /* ExSwiftDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E11AFA119432236006BCE48 /* ExSwiftDictionaryTests.swift */; };
 		1E11AFA819432236006BCE48 /* ExSwiftFloatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E11AFA219432236006BCE48 /* ExSwiftFloatTests.swift */; };
@@ -74,6 +78,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E0F8FB81989431900439203 /* LazySequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazySequence.swift; sourceTree = "<group>"; };
+		1E0F8FBB1989434400439203 /* ExSwiftLazySequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftLazySequenceTests.swift; sourceTree = "<group>"; };
 		1E11AF841943222D006BCE48 /* ExSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E11AF881943222D006BCE48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E11AF891943222D006BCE48 /* ExSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExSwift.h; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				3C0AB977195C7FAF0009BDA0 /* Sequence.swift */,
+				1E0F8FB81989431900439203 /* LazySequence.swift */,
 				1ED536831943863100BDA94E /* ExSwift.swift */,
 				1E11AFAC1943225B006BCE48 /* Array.swift */,
 				1E11AFAD1943225B006BCE48 /* Dictionary.swift */,
@@ -187,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				3C0AB97C195C7FBC0009BDA0 /* ExSwiftSequenceTests.swift */,
+				1E0F8FBB1989434400439203 /* ExSwiftLazySequenceTests.swift */,
 				1E11AFA019432236006BCE48 /* ExSwiftArrayTests.swift */,
 				1E11AFA119432236006BCE48 /* ExSwiftDictionaryTests.swift */,
 				1E48E6221973ED22006FEEC8 /* ExSwiftDoubleTests.swift */,
@@ -387,6 +395,7 @@
 				1E11AFBC1943225B006BCE48 /* String.swift in Sources */,
 				3C0AB978195C7FAF0009BDA0 /* Sequence.swift in Sources */,
 				1E11AFB21943225B006BCE48 /* Array.swift in Sources */,
+				1E0F8FB91989431900439203 /* LazySequence.swift in Sources */,
 				1ED536841943863100BDA94E /* ExSwift.swift in Sources */,
 				1E11AFB41943225B006BCE48 /* Dictionary.swift in Sources */,
 				1E11AFB61943225B006BCE48 /* Float.swift in Sources */,
@@ -407,6 +416,7 @@
 				1EC241FE1946E92E0047109A /* ExSwiftNSArrayTests.swift in Sources */,
 				2EB34F07195473AC00A8D2AF /* Dictionary.swift in Sources */,
 				3C0AB979195C7FB20009BDA0 /* Sequence.swift in Sources */,
+				1E0F8FBC1989434400439203 /* ExSwiftLazySequenceTests.swift in Sources */,
 				1E48E6231973ED22006FEEC8 /* ExSwiftDoubleTests.swift in Sources */,
 				1E11AFA819432236006BCE48 /* ExSwiftFloatTests.swift in Sources */,
 				1E11AFA719432236006BCE48 /* ExSwiftDictionaryTests.swift in Sources */,
@@ -432,6 +442,7 @@
 				2EC02FCD194ED10500619CB5 /* Float.swift in Sources */,
 				3C0AB97A195C7FB30009BDA0 /* Sequence.swift in Sources */,
 				2EC02FCA194ED10500619CB5 /* ExSwift.swift in Sources */,
+				1E0F8FBA1989431900439203 /* LazySequence.swift in Sources */,
 				2EC02FCE194ED10500619CB5 /* Int.swift in Sources */,
 				2EC02FCF194ED10500619CB5 /* Range.swift in Sources */,
 				2EC02FD0194ED10500619CB5 /* String.swift in Sources */,
@@ -452,6 +463,7 @@
 				1ED8FC32194EF9E1004F829A /* ExSwiftIntTests.swift in Sources */,
 				2EB34F0F1954744D00A8D2AF /* Dictionary.swift in Sources */,
 				3C0AB97B195C7FB30009BDA0 /* Sequence.swift in Sources */,
+				1E0F8FBD1989434400439203 /* ExSwiftLazySequenceTests.swift in Sources */,
 				1E48E6241973ED22006FEEC8 /* ExSwiftDoubleTests.swift in Sources */,
 				1ED8FC33194EF9E1004F829A /* ExSwiftRangeTests.swift in Sources */,
 				1ED8FC34194EF9E1004F829A /* ExSwiftStringTests.swift in Sources */,
