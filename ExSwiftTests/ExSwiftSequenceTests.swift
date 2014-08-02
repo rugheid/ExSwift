@@ -13,6 +13,10 @@ class ExtensionsSequenceTests: XCTestCase {
     let sequence = 1...5
     let emptySequence = 1..<1
     
+    func testArray () {
+        XCTAssertEqualArrays(SequenceOf(sequence).array, Array(sequence))
+    }
+    
     func testFirst () {
         let first = SequenceOf(sequence).first()
         XCTAssertEqual(first!, 1)
