@@ -11,6 +11,13 @@ import Foundation
 public extension SequenceOf {
 
     /**
+    *  An Array, created on-demand, containing the elements of this sequence
+    */
+    var array: [T] {
+        get { return Array(self) }
+    }
+    
+    /**
     *  First element of the sequence
     *  @return First element of the sequence if present
     */
@@ -54,7 +61,7 @@ public extension SequenceOf {
     */
     func get (range: Range<Int>) -> SequenceOf<T> {
         return self.skip(range.startIndex)
-            .take(range.endIndex - range.startIndex)
+                   .take(range.endIndex - range.startIndex)
     }
     
     /**
@@ -79,7 +86,7 @@ public extension SequenceOf {
     *  Subsequence from n to the end of the sequence
     *  @return Sequence from n to the end
     */
-    func skip (n:Int) -> SequenceOf<T> {
+    func skip (n: Int) -> SequenceOf<T> {
         var generator =  self.generate();
         for _ in 0..<n {
             generator.next()
@@ -113,7 +120,7 @@ public extension SequenceOf {
     *  @return Elements of the sequence starting with the element which does not meet the condition
     */
     func skipWhile(condition:(T) -> Bool) -> SequenceOf<T> {
-        var generator =  self.generate();
+        var generator =  self.generate()
         var keepSkipping = true
         while keepSkipping {
             if let nextItem = generator.next() {
@@ -131,7 +138,7 @@ public extension SequenceOf {
     *  @return true if self contains item
     */
     func contains<T:Equatable> (item: T) -> Bool {
-        var generator =  self.generate();
+        var generator =  self.generate()
         while let nextItem = generator.next() {
             if nextItem as T == item {
                 return true;
