@@ -13,6 +13,7 @@ public extension SequenceOf {
     /**
         An Array, created on-demand, containing the elements of this sequence.
     */
+
     var array: [T] {
         return Array(self)
     }
