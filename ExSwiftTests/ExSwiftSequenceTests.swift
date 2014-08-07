@@ -18,12 +18,12 @@ class ExtensionsSequenceTests: XCTestCase {
     }
     
     func testFirst () {
-        let first = SequenceOf(sequence).first()
+        let first = SequenceOf(sequence).first
         XCTAssertEqual(first!, 1)
     }
     
     func testFirstEmptySequence () {
-        let first = SequenceOf(emptySequence).first()
+        let first = SequenceOf(emptySequence).first
         XCTAssertNil(first)
     }
     

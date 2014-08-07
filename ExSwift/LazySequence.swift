@@ -10,13 +10,14 @@ import Foundation
 
 extension LazySequence {
     
-    typealias T = S.GeneratorType.Element
+    typealias T = S.Generator.Element
     
     /**
-    *  First element of the sequence
-    *  @return First element of the sequence if present
+        First element of the sequence
+    
+        :returns: First element of the sequence if present
     */
-    func first () -> T? {
+    var first: T? {
         var generator = self.generate()
         return generator.next()
     }
@@ -33,6 +34,7 @@ extension LazySequence {
                 return true
             }
         }
+        
         return false
     }
     
@@ -55,8 +57,7 @@ extension LazySequence {
     *  @return Subsequence in range
     */
     func get (range: Range<Int>) -> SequenceOf<T> {
-        return self.skip(range.startIndex)
-                   .take(range.endIndex - range.startIndex)
+        return self.skip(range.startIndex).take(range.endIndex - range.startIndex)
     }
     
     /**

@@ -14,11 +14,11 @@ class ExSwiftLazySequenceTests: XCTestCase {
     let emptySequence = lazy(1..<1) as LazySequence
 
     func testFirst () {
-        XCTAssertEqual(sequence.first()!, 1)
+        XCTAssertEqual(sequence.first!, 1)
     }
     
     func testFirstEmptySequence () {
-        XCTAssertNil(emptySequence.first())
+        XCTAssertNil(emptySequence.first)
     }
     
     func testSkip () {

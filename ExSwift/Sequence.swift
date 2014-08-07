@@ -14,7 +14,7 @@ public extension SequenceOf {
         An Array, created on-demand, containing the elements of this sequence.
     */
     var array: [T] {
-        get { return Array(self) }
+        return Array(self)
     }
     
     /**
@@ -22,8 +22,8 @@ public extension SequenceOf {
     
         :returns: First element of the sequence if present
     */
-    func first () -> T? {
-        var generator =  self.generate()
+    var first: T? {
+        var generator = self.generate()
         return generator.next()
     }
     
