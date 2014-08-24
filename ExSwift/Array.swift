@@ -112,7 +112,7 @@ public extension Array {
         
         :returns: First element of the array if not empty
     */
-    func first () -> Element? {
+    @availability(*, unavailable, message="use the 'first' property instead") func first () -> Element? {
         return first
     }
 
@@ -121,7 +121,7 @@ public extension Array {
     
         :returns: Last element of the array if not empty
     */
-    func last () -> Element? {
+    @availability(*, unavailable, message="use the 'last' property instead") func last () -> Element? {
         return last
     }
 
@@ -248,8 +248,10 @@ public extension Array {
         var result = [Array]()
         
         // If no step is supplied move n each step.
-        step = step ?? n
-        
+        if step == nil {
+            step = n
+        }
+
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         if n > count { return [[]] }
@@ -275,8 +277,10 @@ public extension Array {
         var result = [Array]()
         
         // If no step is supplied move n each step.
-        step = step ?? n
-        
+        if step == nil {
+            step = n
+        }
+
         // Less than 1 results in an infinite loop.
         if step < 1 {
             step = 1
@@ -320,8 +324,10 @@ public extension Array {
         var result = [Array]()
 
         // If no step is supplied move n each step.
-        step = step ?? n
-        
+        if step == nil {
+            step = n
+        }
+
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
 
@@ -673,8 +679,27 @@ public extension Array {
     }
 
     /**
+        Returns the number of elements which meet the condition
+
+        :param: test Function to call for each element
+        :returns: the number of elements meeting the condition
+    */
+    func countWhere (test: (Element) -> Bool) -> Int {
+
+        var result = 0
+
+        for item in self {
+            if test(item) {
+                result++
+            }
+        }
+
+        return result
+    }
+
+    /**
         Joins the array elements with a separator.
-        
+
         :param: separator
         :return: Joined object if self is not empty and its elements are instances of C, nil otherwise
     */
@@ -712,7 +737,7 @@ public extension Array {
         self.reduce with initial value self.first()
     */
     func reduce (combine: (Element, Element) -> Element) -> Element? {
-        if let firstElement = first() {
+        if let firstElement = first {
             return skip(1).reduce(firstElement, combine: combine)
         }
         
@@ -759,7 +784,7 @@ public extension Array {
     }
 
     /**
-        Flattens the nested Array self to an array of OutType objects.
+        Flattens a nested Array self to an array of OutType objects.
     
         :returns: Flattened array
     */
@@ -769,6 +794,25 @@ public extension Array {
         
         for i in 0..<reflection.count {
             result += Ex.bridgeObjCObject(reflection[i].1.value) as [OutType]
+        }
+        
+        return result
+    }
+    
+    /**
+        Flattens a nested Array self to an array of AnyObject.
+    
+        :returns: Flattened array
+    */
+    func flattenAny () -> [AnyObject] {
+        var result = [AnyObject]()
+        
+        for item in self {
+            if let array = item as? NSArray {
+                result += array.flattenAny()
+            } else if let object = item as? NSObject {
+                result.append(object)
+            }
         }
         
         return result
@@ -905,8 +949,8 @@ public extension Array {
         :returns: Array with the items at the specified indexes
     */
     subscript (first: Int, second: Int, rest: Int...) -> Array {
-        typealias IntsType = (Int...)
-        return at(unsafeBitCast([first, second] + rest, IntsType.self))
+        let indexes = [first, second] + rest
+        return indexes.map { self[$0] }
     }
 
 }

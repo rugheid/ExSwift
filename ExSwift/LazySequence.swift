@@ -23,9 +23,10 @@ extension LazySequence {
     }
     
     /**
-    *  Checks if call returns true for any element of self
-    *  @param getElement Function to call for each element
-    *  @return True if call returns true for any element of self
+        Checks if call returns true for any element of self
+    
+        :param: getElement Function to call for each element
+        :returns: true if call returns true for any element of self
     */
     func any (getElement: (T) -> Bool) -> Bool {
         var generator = self.generate()
@@ -39,9 +40,10 @@ extension LazySequence {
     }
     
     /**
-    *  Object at the specified index if exists
-    *  @param index
-    *  @return Object at index in sequence, nil if index is out of bounds
+        Object at the specified index if exists
+    
+        :param: index
+        :returns: Object at index in sequence, nil if index is out of bounds
     */
     func get (index: Int) -> T? {
         var generator = self.generate()
@@ -52,18 +54,20 @@ extension LazySequence {
     }
     
     /**
-    *  Objects in the specified range
-    *  @param range
-    *  @return Subsequence in range
+        Objects in the specified range
+
+        :param: range
+        :returns: Subsequence in range
     */
     func get (range: Range<Int>) -> SequenceOf<T> {
         return self.skip(range.startIndex).take(range.endIndex - range.startIndex)
     }
     
     /**
-    *  Index of the first occurrence of item, if found
-    *  @param item The item to search for
-    *  @return Index of the matched item or nil
+        Index of the first occurrence of item, if found
+    
+        :param: item The item to search for
+        :returns: Index of the matched item or nil
     */
     func indexOf <U: Equatable> (item: U) -> Int? {
         var index = 0;
@@ -79,8 +83,9 @@ extension LazySequence {
     }
     
     /**
-    *  Subsequence from n to the end of the sequence
-    *  @return Sequence from n to the end
+        Subsequence from n to the end of the sequence
+    
+        :returns: Sequence from n to the end
     */
     func skip (n: Int) -> SequenceOf<T> {
         var generator =  self.generate();
@@ -91,9 +96,10 @@ extension LazySequence {
     }
     
     /**
-    *  Opposite of filter
-    *  @param exclude Function invoked to test elements for exlcusion from the sequence
-    *  @return Filtered sequence
+        Opposite of filter
+    
+        :param: exclude Function invoked to test elements for exlcusion from the sequence
+        :returns: Filtered sequence
     */
     func reject (exclude: (T -> Bool)) -> LazySequence<FilterSequenceView<S>> {
         return self.filter {
@@ -102,9 +108,10 @@ extension LazySequence {
     }
     
     /**
-    *  Skips the elements in the sequence up until the condition returns false
-    *  @param condition A function which returns a boolean if an element satisfies a given condition or not
-    *  @return Elements of the sequence starting with the element which does not meet the condition
+        Skips the elements in the sequence up until the condition returns false
+    
+        :param: condition A function which returns a boolean if an element satisfies a given condition or not
+        :returns: Elements of the sequence starting with the element which does not meet the condition
     */
     func skipWhile(condition:(T) -> Bool) -> SequenceOf<T> {
         var generator =  self.generate()
@@ -118,9 +125,10 @@ extension LazySequence {
     }
     
     /**
-    *  Checks if self contains the item object
-    *  @param item The item to search for
-    *  @return true if self contains item
+        Checks if self contains the item object
+    
+        :param: item The item to search for
+        :returns: true if self contains item
     */
     func contains<T:Equatable> (item: T) -> Bool {
         var generator =  self.generate()
@@ -133,17 +141,19 @@ extension LazySequence {
     }
     
     /**
-    *  Returns the first n elements from self
-    *  @return First n elements
+        Returns the first n elements from self
+    
+        :returns: First n elements in the sequence
     */
     func take (n: Int) -> SequenceOf<T> {
         return SequenceOf(TakeSequence(self, n))
     }
     
     /**
-    *  Returns the elements of the sequence up until an element does not meet the condition
-    *  @param condition A function which returns a boolean if an element satisfies a given condition or not.
-    *  @return Elements of the sequence up until an element does not meet the condition
+        Returns the elements of the sequence up until an element does not meet the condition
+    
+        :param: condition A function which returns a boolean if an element satisfies a given condition or not.
+        :returns: Elements of the sequence up until an element does not meet the condition
     */
     func takeWhile (condition: (T?) -> Bool) -> SequenceOf<T>  {
         return SequenceOf(TakeWhileSequence(self, condition))

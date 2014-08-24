@@ -11,20 +11,12 @@ import Foundation
 public extension SequenceOf {
 
     /**
-        An Array, created on-demand, containing the elements of this sequence.
-    */
-
-    var array: [T] {
-        return Array(self)
-    }
-    
-    /**
         First element of the sequence.
     
         :returns: First element of the sequence if present
     */
-    var first: T? {
-        var generator = self.generate()
+    func first () -> T? {
+        var generator =  self.generate()
         return generator.next()
     }
     
@@ -206,7 +198,7 @@ public struct TakeSequence<S: SequenceType>: SequenceType {
 }
 
 /**
-    A sequence adapter that implements the 'takeWhile' functionality
+    a sequence adapter that implements the 'takeWhile' functionality
 */
 public struct TakeWhileSequence<S: SequenceType>: SequenceType {
     private let sequence: S
