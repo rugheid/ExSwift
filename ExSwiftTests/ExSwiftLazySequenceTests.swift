@@ -22,7 +22,7 @@ class ExSwiftLazySequenceTests: XCTestCase {
     }
     
     func testSkip () {
-        XCTAssertEqualArrays(sequence.skip(2).array, [3, 4, 5])
+        XCTAssertEqual(sequence.skip(2).array, [3, 4, 5])
     }
     
     func testSkipBeyondEnd () {
@@ -30,7 +30,7 @@ class ExSwiftLazySequenceTests: XCTestCase {
     }
     
     func testSkipWhile () {
-        XCTAssertEqualArrays(sequence.skipWhile { $0 < 3 }.array, [4, 5])
+        XCTAssertEqual(sequence.skipWhile { $0 < 3 }.array, [4, 5])
     }
     
     func testSkipWhileBeyondEnd () {
@@ -43,15 +43,15 @@ class ExSwiftLazySequenceTests: XCTestCase {
     }
     
     func testTake () {
-        XCTAssertEqualArrays(sequence.take(2).array, [1, 2])
+        XCTAssertEqual(sequence.take(2).array, [1, 2])
     }
     
     func testTakeBeyondSequenceEnd () {
-        XCTAssertEqualArrays(sequence.take(20).array, [1, 2, 3, 4, 5])
+        XCTAssertEqual(sequence.take(20).array, [1, 2, 3, 4, 5])
     }
     
     func testTakeWhile () {
-        XCTAssertEqualArrays(sequence.takeWhile { $0 != 3 }.array, [1, 2])
+        XCTAssertEqual(sequence.takeWhile { $0 != 3 }.array, [1, 2])
     }
     
     func testTakeWhileConditionNeverTrue () {
@@ -59,7 +59,7 @@ class ExSwiftLazySequenceTests: XCTestCase {
     }
     
     func testTakeWhileConditionNotMet () {
-        XCTAssertEqualArrays(sequence.takeWhile { $0 != 7 }.array, [1, 2, 3, 4, 5])
+        XCTAssertEqual(sequence.takeWhile { $0 != 7 }.array, [1, 2, 3, 4, 5])
     }
     
     func testIndexOf () {
@@ -73,7 +73,7 @@ class ExSwiftLazySequenceTests: XCTestCase {
     }
     
     func testGetRange () {
-        XCTAssertEqualArrays(sequence.get(1..<3).array, [2, 3])
+        XCTAssertEqual(sequence.get(1..<3).array, [2, 3])
         XCTAssertTrue(sequence.get(0..<0).array.isEmpty)
     }
     
@@ -88,12 +88,12 @@ class ExSwiftLazySequenceTests: XCTestCase {
     
     func testReject () {
         var rejected = sequence.reject { $0 == 3 }
-        XCTAssertEqualArrays(rejected.array, [1, 2, 4, 5])
+        XCTAssertEqual(rejected.array, [1, 2, 4, 5])
         
         rejected = sequence.reject { $0 == 1 }
-        XCTAssertEqualArrays(rejected.array, [2, 3, 4, 5])
+        XCTAssertEqual(rejected.array, [2, 3, 4, 5])
         
         rejected = sequence.reject { $0 == 10 }
-        XCTAssertEqualArrays(rejected.array, [1, 2, 3, 4, 5])
+        XCTAssertEqual(rejected.array, [1, 2, 3, 4, 5])
     }
 }

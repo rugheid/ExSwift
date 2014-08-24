@@ -11,6 +11,14 @@ import Foundation
 public extension SequenceOf {
 
     /**
+        An Array, created on-demand, containing the elements of this sequence.
+    */
+
+    var array: [T] {
+        return Array(self)
+    }
+
+    /**
         First element of the sequence.
     
         :returns: First element of the sequence if present
