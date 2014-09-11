@@ -39,7 +39,7 @@ public extension Int {
     
         :param: function Function to call
     */
-    func times <T> (function: (Int) -> T) {
+    func times <T> (function: Int -> T) {
         (0..<self).each { index in function(index); return }
     }
 
