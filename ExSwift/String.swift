@@ -165,6 +165,28 @@ public extension String {
     func trimmed () -> String {
         return ltrimmed().rtrimmed()
     }
+    
+    /**
+        Returns a new string made by removing characters contained in a given character set.
+    
+        :param: set A character set containing the characters to remove from the receiver. set must not be nil.
+    
+        :returns: A new string made by removing from the receiver characters contained in set. If the receiver is composed entirely of characters from set, the empty string is returned.
+    */
+    func stringByRemovingCharactersInSet(set: NSCharacterSet) -> String {
+        
+        var cleanedString = ""
+        
+        for character in Array(self) {
+            
+            if !set.characterIsMember(character.unicharValue) {
+                
+                cleanedString += "\(character)"
+            }
+        }
+        
+        return cleanedString
+    }
 
     /**
         Costructs a string using random chars from a given set.
@@ -245,4 +267,9 @@ public func |~ (strings: [String], pattern: String) -> Bool {
 
 public func |~ (strings: [String], options: (pattern: String, ignoreCase: Bool)) -> Bool {
     return strings.any { $0 =~ options }
+}
+
+//  Remove characters from character set
+public func - (left: String, right: NSCharacterSet) -> String {
+    return left.stringByRemovingCharactersInSet(right)
 }

@@ -130,4 +130,28 @@ class ExSwiftStringTests: XCTestCase {
         XCTAssertEqual("AB ".rtrimmed(), "AB")
         XCTAssertEqual("\n ABC   ".rtrimmed(), "\n ABC")
     }
+    
+    func testRemoveCharactersFromSetFunction () {
+        let testString = "(abc)+&123&"
+        
+        var expected = "abc"
+        var result = testString.stringByRemovingCharactersInSet(NSCharacterSet.letterCharacterSet().invertedSet)
+        XCTAssertEqual(expected, result)
+        
+        expected = "(abc)+&&"
+        result = testString.stringByRemovingCharactersInSet(NSCharacterSet.decimalDigitCharacterSet())
+        XCTAssertEqual(expected, result)
+    }
+    
+    func testRemoveCharactersFromSetOperator () {
+        let testString = "(abc)+&123&"
+        
+        var expected = "abc"
+        var result = testString - NSCharacterSet.letterCharacterSet().invertedSet
+        XCTAssertEqual(expected, result)
+        
+        expected = "(abc)+&&"
+        result = testString - NSCharacterSet.decimalDigitCharacterSet()
+        XCTAssertEqual(expected, result)
+    }
 }
